@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Inspector</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo-section">
+                <img src="../icons/icon-32.png" alt="A11y Inspector" class="logo">
+                <h1>A11y Inspector</h1>
+            </div>
+            <div class="version">v1.0.0</div>
+        </header>
+
+        <div class="main-content">
+            <div class="quick-scan-section">
+                <button id="quickScanBtn" class="primary-btn">
+                    <span class="btn-icon">🔍</span>
+                    Quick Scan
+                </button>
+                <div class="scan-status" id="scanStatus">
+                    <span class="status-indicator"></span>
+                    Ready to scan
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="score-card">
+                    <div class="score-circle" id="scoreCircle">
+                        <span class="score-number" id="scoreNumber">0</span>
+                        <span class="score-label">Score</span>
+                    </div>
+                    <div class="score-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Issues Found:</span>
+                            <span class="detail-value error" id="issuesCount">0</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Warnings:</span>
+                            <span class="detail-value warning" id="warningsCount">0</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Passed:</span>
+                            <span class="detail-value success" id="passedCount">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="issues-summary">
+                    <h3>Top Issues</h3>
+                    <div class="issues-list" id="issuesList">
+                        <!-- Issues will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions-section">
+                <button id="detailedAnalysisBtn" class="secondary-btn">
+                    <span class="btn-icon">📊</span>
+                    Detailed Analysis
+                </button>
+                <button id="exportReportBtn" class="secondary-btn">
+                    <span class="btn-icon">📄</span>
+                    Export Report
+                </button>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="support-section">
+                <button id="donateBtn" class="donate-btn">
+                    <span class="btn-icon">💎</span>
+                    Support with Crypto
+                </button>
+            </div>
+            <div class="footer-links">
+                <a href="#" id="settingsLink">Settings</a>
+                <span class="separator">•</span>
+                <a href="mailto:dang@gmail.com">Support</a>
+            </div>
+        </footer>
+    </div>
+
+    <div class="modal" id="donateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Support A11y Inspector</h2>
+                <button class="close-btn" id="closeDonateModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Help us continue improving web accessibility for everyone! Your crypto donation supports ongoing development and maintenance.</p>
+                <div class="crypto-options">
+                    <div class="crypto-option">
+                        <h4>Bitcoin (BTC)</h4>
+                        <div class="crypto-address">
+                            <code>1NuAoERV35Qb2T5WWTH9GbEsQj9q3nSry9</code>
+                            <button class="copy-btn" data-address="1NuAoERV35Qb2T5WWTH9GbEsQj9q3nSry9">Copy</button>
+                        </div>
+                    </div>
+                    <div class="crypto-option">
+                        <h4>Ethereum (ETH)</h4>
+                        <div class="crypto-address">
+                            <code>0x7101349da3b604aaa9dd3b286c218b79cf735ad2</code>
+                            <button class="copy-btn" data-address="0x7101349da3b604aaa9dd3b286c218b79cf735ad2">Copy</button>
+                        </div>
+                    </div>
+                    <div class="crypto-option">
+                        <h4>Solena (Sol)</h4>
+                        <div class="crypto-address">
+                            <code>ADf9rAbntbBc7nuqNdyVhFkinEpAqodwvrNgZnrtBZzE</code>
+                            <button class="copy-btn" data-address="ADf9rAbntbBc7nuqNdyVhFkinEpAqodwvrNgZnrtBZzE">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

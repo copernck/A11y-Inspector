@@ -1,0 +1,249 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Inspector - Detailed Analysis</title>
+    <link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+    <div class="sidebar-container">
+        <header class="sidebar-header">
+            <div class="logo-section">
+                <img src="../icons/icon-32.png" alt="A11y Inspector" class="logo">
+                <div>
+                    <h1>A11y Inspector</h1>
+                    <p class="subtitle">Detailed Accessibility Analysis</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="refreshBtn" class="icon-btn" title="Refresh Analysis">
+                    <span class="icon">🔄</span>
+                </button>
+                <button id="exportBtn" class="icon-btn" title="Export Report">
+                    <span class="icon">📄</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="sidebar-content">
+            <!-- Score Overview -->
+            <div class="score-section">
+                <div class="score-card">
+                    <div class="score-circle" id="sidebarScoreCircle">
+                        <span class="score-number" id="sidebarScoreNumber">0</span>
+                        <span class="score-label">Score</span>
+                    </div>
+                    <div class="score-stats">
+                        <div class="stat-item">
+                            <span class="stat-number error" id="sidebarIssuesCount">0</span>
+                            <span class="stat-label">Issues</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number warning" id="sidebarWarningsCount">0</span>
+                            <span class="stat-label">Warnings</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number success" id="sidebarPassedCount">0</span>
+                            <span class="stat-label">Passed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                    <button id="highlightIssuesBtn" class="action-btn">
+                        <span class="icon">🔍</span>
+                        Highlight Issues
+                    </button>
+                    <button id="highlightWarningsBtn" class="action-btn">
+                        <span class="icon">⚠️</span>
+                        Highlight Warnings
+                    </button>
+                    <button id="clearHighlightsBtn" class="action-btn">
+                        <span class="icon">🧹</span>
+                        Clear Highlights
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Options -->
+            <div class="filter-section">
+                <h3>Accessibility Filters</h3>
+                <div class="filter-grid">
+                    <button class="filter-btn" data-filter="protanopia" title="Protanopia (Red-Blind)">
+                        <span class="filter-icon">🔴</span>
+                        <span class="filter-label">Protanopia</span>
+                    </button>
+                    <button class="filter-btn" data-filter="deuteranopia" title="Deuteranopia (Green-Blind)">
+                        <span class="filter-icon">🟢</span>
+                        <span class="filter-label">Deuteranopia</span>
+                    </button>
+                    <button class="filter-btn" data-filter="tritanopia" title="Tritanopia (Blue-Blind)">
+                        <span class="filter-icon">🔵</span>
+                        <span class="filter-label">Tritanopia</span>
+                    </button>
+                    <button class="filter-btn" data-filter="high-contrast" title="High Contrast">
+                        <span class="filter-icon">🌓</span>
+                        <span class="filter-label">High Contrast</span>
+                    </button>
+                    <button class="filter-btn" data-filter="large-text" title="Large Text">
+                        <span class="filter-icon">📝</span>
+                        <span class="filter-label">Large Text</span>
+                    </button>
+                    <button class="filter-btn" data-filter="reduced-motion" title="Reduced Motion">
+                        <span class="filter-icon">🎬</span>
+                        <span class="filter-label">Reduced Motion</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Detailed Results -->
+            <div class="results-section">
+                <div class="results-tabs">
+                    <button class="tab-btn active" data-tab="issues">Issues</button>
+                    <button class="tab-btn" data-tab="warnings">Warnings</button>
+                    <button class="tab-btn" data-tab="passed">Passed</button>
+                    <button class="tab-btn" data-tab="wcag">WCAG</button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- Issues Tab -->
+                    <div class="tab-pane active" id="issues-tab">
+                        <div class="issues-list" id="detailedIssuesList">
+                            <div class="empty-state">
+                                <span class="empty-icon">📋</span>
+                                <p>No issues found</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Warnings Tab -->
+                    <div class="tab-pane" id="warnings-tab">
+                        <div class="warnings-list" id="detailedWarningsList">
+                            <div class="empty-state">
+                                <span class="empty-icon">📋</span>
+                                <p>No warnings found</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Passed Tab -->
+                    <div class="tab-pane" id="passed-tab">
+                        <div class="passed-list" id="detailedPassedList">
+                            <div class="empty-state">
+                                <span class="empty-icon">📋</span>
+                                <p>No passed checks yet</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WCAG Tab -->
+                    <div class="tab-pane" id="wcag-tab">
+                        <div class="wcag-overview">
+                            <h4>WCAG 2.1 Compliance</h4>
+                            <div class="wcag-grid">
+                                <div class="wcag-category">
+                                    <h5>Perceivable</h5>
+                                    <div class="wcag-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%"></div>
+                                        </div>
+                                        <span class="progress-text">0%</span>
+                                    </div>
+                                </div>
+                                <div class="wcag-category">
+                                    <h5>Operable</h5>
+                                    <div class="wcag-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%"></div>
+                                        </div>
+                                        <span class="progress-text">0%</span>
+                                    </div>
+                                </div>
+                                <div class="wcag-category">
+                                    <h5>Understandable</h5>
+                                    <div class="wcag-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%"></div>
+                                        </div>
+                                        <span class="progress-text">0%</span>
+                                    </div>
+                                </div>
+                                <div class="wcag-category">
+                                    <h5>Robust</h5>
+                                    <div class="wcag-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%"></div>
+                                        </div>
+                                        <span class="progress-text">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="sidebar-footer">
+            <div class="footer-actions">
+                <button id="settingsBtn" class="footer-btn">
+                    <span class="icon">⚙️</span>
+                    Settings
+                </button>
+                <button id="donateBtn" class="footer-btn donate">
+                    <span class="icon">💎</span>
+                    Donate
+                </button>
+            </div>
+            <div class="footer-info">
+                <p>A11y Inspector v1.0.0</p>
+                <p><a href="mailto:tamiusobserver@gmail.com">Support</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Element Inspector Modal -->
+    <div class="modal" id="elementInspectorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Element Inspector</h3>
+                <button class="close-btn" id="closeInspectorModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="element-details">
+                    <div class="detail-row">
+                        <label>Element:</label>
+                        <code id="inspectorElementTag"></code>
+                    </div>
+                    <div class="detail-row">
+                        <label>Issue:</label>
+                        <span id="inspectorIssueTitle"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>Description:</label>
+                        <p id="inspectorIssueDescription"></p>
+                    </div>
+                    <div class="detail-row">
+                        <label>WCAG Guideline:</label>
+                        <span id="inspectorWcagGuideline"></span>
+                    </div>
+                    <div class="detail-row">
+                        <label>Suggestion:</label>
+                        <p id="inspectorSuggestion"></p>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button id="inspectElementBtn" class="primary-btn">Inspect Element</button>
+                    <button id="copyElementInfoBtn" class="secondary-btn">Copy Info</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="sidebar.js"></script>
+</body>
+</html>

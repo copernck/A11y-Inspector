@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Inspector Settings</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="settings-container">
+        <header class="settings-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="../icons/icon-48.png" alt="A11y Inspector" class="logo">
+                    <div>
+                        <h1>A11y Inspector</h1>
+                        <p class="subtitle">Settings & Preferences</p>
+                    </div>
+                </div>
+                <div class="version-info">
+                    <span class="version">v1.0.0</span>
+                    <button id="checkUpdateBtn" class="update-btn">Check for Updates</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="settings-content">
+            <nav class="settings-nav">
+                <button class="nav-btn active" data-section="general">General</button>
+                <button class="nav-btn" data-section="scanning">Scanning</button>
+                <button class="nav-btn" data-section="appearance">Appearance</button>
+                <button class="nav-btn" data-section="advanced">Advanced</button>
+                <button class="nav-btn" data-section="about">About</button>
+            </nav>
+
+            <div class="settings-main">
+                <!-- General Settings -->
+                <div class="settings-section active" id="general-section">
+                    <h2>General Settings</h2>
+                    
+                    <div class="setting-group">
+                        <h3>Basic Options</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="autoScan" class="toggle-checkbox">
+                                <span class="toggle-text">Auto-scan pages on load</span>
+                            </label>
+                            <p class="setting-description">Automatically scan pages for accessibility issues when they load</p>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="showNotifications" class="toggle-checkbox" checked>
+                                <span class="toggle-text">Show notifications</span>
+                            </label>
+                            <p class="setting-description">Show notifications when scans complete or issues are found</p>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="highlightIssues" class="toggle-checkbox" checked>
+                                <span class="toggle-text">Highlight issues on page</span>
+                            </label>
+                            <p class="setting-description">Automatically highlight accessibility issues on the page</p>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Language & Region</h3>
+                        <div class="setting-item">
+                            <label for="language" class="setting-label">Language</label>
+                            <select id="language" class="setting-select">
+                                <option value="en">English</option>
+                                <option value="es">Español</option>
+                                <option value="fr">Français</option>
+                                <option value="de">Deutsch</option>
+                                <option value="ja">日本語</option>
+                                <option value="zh">中文</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scanning Settings -->
+                <div class="settings-section" id="scanning-section">
+                    <h2>Scanning Settings</h2>
+                    
+                    <div class="setting-group">
+                        <h3>WCAG Compliance</h3>
+                        <div class="setting-item">
+                            <label for="wcagVersion" class="setting-label">WCAG Version</label>
+                            <select id="wcagVersion" class="setting-select">
+                                <option value="2.0">WCAG 2.0</option>
+                                <option value="2.1" selected>WCAG 2.1</option>
+                                <option value="2.2">WCAG 2.2</option>
+                            </select>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label for="complianceLevel" class="setting-label">Compliance Level</label>
+                            <select id="complianceLevel" class="setting-select">
+                                <option value="A">Level A (Minimum)</option>
+                                <option value="AA" selected>Level AA (Recommended)</option>
+                                <option value="AAA">Level AAA (Enhanced)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Scan Options</h3>
+                        <div class="setting-item">
+                            <label for="scanFrequency" class="setting-label">Scan Frequency</label>
+                            <select id="scanFrequency" class="setting-select">
+                                <option value="manual" selected>Manual Only</option>
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label for="exportFormat" class="setting-label">Default Export Format</label>
+                            <select id="exportFormat" class="setting-select">
+                                <option value="html" selected>HTML Report</option>
+                                <option value="json">JSON Data</option>
+                                <option value="csv">CSV Summary</option>
+                                <option value="pdf">PDF Report</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Exclusions</h3>
+                        <div class="setting-item">
+                            <label for="excludedSelectors" class="setting-label">Excluded CSS Selectors</label>
+                            <textarea id="excludedSelectors" class="setting-textarea" rows="4" placeholder="Enter CSS selectors to exclude from scanning, one per line&#10;Example: .advertisement, #sidebar, .widget"></textarea>
+                            <p class="setting-description">Elements matching these selectors will be excluded from accessibility scans</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appearance Settings -->
+                <div class="settings-section" id="appearance-section">
+                    <h2>Appearance Settings</h2>
+                    
+                    <div class="setting-group">
+                        <h3>Theme</h3>
+                        <div class="setting-item">
+                            <label for="theme" class="setting-label">Color Theme</label>
+                            <select id="theme" class="setting-select">
+                                <option value="default" selected>Default</option>
+                                <option value="dark">Dark Mode</option>
+                                <option value="high-contrast">High Contrast</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="compactMode" class="toggle-checkbox">
+                                <span class="toggle-text">Compact Mode</span>
+                            </label>
+                            <p class="setting-description">Use a more compact interface layout</p>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Highlight Colors</h3>
+                        <div class="color-settings">
+                            <div class="color-setting-item">
+                                <label for="errorColor" class="setting-label">Error Color</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="errorColor" class="color-input" value="#ef4444">
+                                    <span class="color-value">#ef4444</span>
+                                </div>
+                            </div>
+                            
+                            <div class="color-setting-item">
+                                <label for="warningColor" class="setting-label">Warning Color</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="warningColor" class="color-input" value="#f59e0b">
+                                    <span class="color-value">#f59e0b</span>
+                                </div>
+                            </div>
+                            
+                            <div class="color-setting-item">
+                                <label for="successColor" class="setting-label">Success Color</label>
+                                <div class="color-input-wrapper">
+                                    <input type="color" id="successColor" class="color-input" value="#10b981">
+                                    <span class="color-value">#10b981</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Settings -->
+                <div class="settings-section" id="advanced-section">
+                    <h2>Advanced Settings</h2>
+                    
+                    <div class="setting-group">
+                        <h3>Custom Rules</h3>
+                        <div class="setting-item">
+                            <label for="customRules" class="setting-label">Custom Accessibility Rules</label>
+                            <textarea id="customRules" class="setting-textarea" rows="6" placeholder="Enter custom accessibility rules in JSON format&#10;Example:&#10;[{&#10;  &quot;name&quot;: &quot;Custom Rule&quot;,&#10;  &quot;selector&quot;: &quot;.custom-element&quot;,&#10;  &quot;check&quot;: &quot;has-aria-label&quot;&#10;}]"></textarea>
+                            <p class="setting-description">Define custom accessibility rules using JSON format</p>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Data & Privacy</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="telemetry" class="toggle-checkbox" checked>
+                                <span class="toggle-text">Send anonymous usage data</span>
+                            </label>
+                            <p class="setting-description">Help improve A11y Inspector by sending anonymous usage statistics</p>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="autoUpdate" class="toggle-checkbox" checked>
+                                <span class="toggle-text">Automatic updates</span>
+                            </label>
+                            <p class="setting-description">Automatically check for and install updates</p>
+                        </div>
+                    </div>
+
+                    <div class="setting-group">
+                        <h3>Data Management</h3>
+                        <div class="setting-item">
+                            <button id="exportDataBtn" class="action-btn secondary">
+                                <span class="btn-icon">📤</span>
+                                Export Data
+                            </button>
+                            <button id="importDataBtn" class="action-btn secondary">
+                                <span class="btn-icon">📥</span>
+                                Import Data
+                            </button>
+                            <button id="clearDataBtn" class="action-btn danger">
+                                <span class="btn-icon">🗑️</span>
+                                Clear All Data
+                            </button>
+                            <input type="file" id="importFile" accept=".json" style="display: none;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Section -->
+                <div class="settings-section" id="about-section">
+                    <h2>About A11y Inspector</h2>
+                    
+                    <div class="about-content">
+                        <div class="about-section">
+                            <h3>Version Information</h3>
+                            <div class="version-details">
+                                <div class="version-row">
+                                    <span class="version-label">Version:</span>
+                                    <span class="version-value">1.0.0</span>
+                                </div>
+                                <div class="version-row">
+                                    <span class="version-label">Build:</span>
+                                    <span class="version-value">2024.01.15</span>
+                                </div>
+                                <div class="version-row">
+                                    <span class="version-label">Last Updated:</span>
+                                    <span class="version-value">January 15, 2024</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="about-section">
+                            <h3>Description</h3>
+                            <p>A11y Inspector is a comprehensive web accessibility testing tool that helps developers and testers create inclusive digital experiences. It provides real-time analysis of web pages against WCAG guidelines and offers detailed reporting to ensure compliance with accessibility standards.</p>
+                        </div>
+
+                        <div class="about-section">
+                            <h3>Features</h3>
+                            <ul class="features-list">
+                                <li>✅ Comprehensive WCAG 2.1 compliance checking</li>
+                                <li>✅ Real-time page analysis and highlighting</li>
+                                <li>✅ Detailed sidebar with in-depth analysis</li>
+                                <li>✅ Export reports in multiple formats</li>
+                                <li>✅ Color blindness simulation filters</li>
+                                <li>✅ Keyboard navigation testing</li>
+                                <li>✅ Screen reader compatibility checks</li>
+                                <li>✅ Mobile accessibility testing</li>
+                            </ul>
+                        </div>
+
+                        <div class="about-section">
+                            <h3>Support</h3>
+                            <div class="support-links">
+                                <div class="support-item">
+                                    <span class="support-icon">📧</span>
+                                    <div>
+                                        <strong>Email Support</strong>
+                                        <p><a href="mailto:dang@gmail.com">dang@gmail.com</a></p>
+                                    </div>
+                                </div>
+                                <div class="support-item">
+                                    <span class="support-icon">🐛</span>
+                                    <div>
+                                        <strong>Report Issues</strong>
+                                        <p>Help us improve by reporting bugs</p>
+                                    </div>
+                                </div>
+                                <div class="support-item">
+                                    <span class="support-icon">💎</span>
+                                    <div>
+                                        <strong>Support Development</strong>
+                                        <p>Donate with cryptocurrency to support ongoing development</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="about-section">
+                            <h3>License</h3>
+                            <p>A11y Inspector is released under the MIT License. You are free to use, modify, and distribute this extension for both personal and commercial purposes.</p>
+                        </div>
+
+                        <div class="about-section">
+                            <h3>Acknowledgments</h3>
+                            <p>A11y Inspector is built with modern web technologies and follows best practices in accessibility testing. We thank the open-source community and WCAG guidelines for making the web more accessible for everyone.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-footer">
+            <div class="footer-actions">
+                <button id="saveSettingsBtn" class="primary-btn">Save Settings</button>
+                <button id="resetSettingsBtn" class="secondary-btn">Reset to Defaults</button>
+            </div>
+            <div class="footer-info">
+                <p>© 2025 A11y Inspector. Made with ❤️ for a more accessible web.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="confirmTitle">Confirm Action</h3>
+                <button class="close-btn" id="closeConfirmModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">Are you sure you want to proceed?</p>
+            </div>
+            <div class="modal-actions">
+                <button id="confirmBtn" class="primary-btn">Confirm</button>
+                <button id="cancelBtn" class="secondary-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>

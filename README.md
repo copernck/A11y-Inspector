@@ -1,6 +1,3 @@
-# A11y-Inspector
-( experiment )⚡ privacy‑focused accessibility inspector for firefox — scans, highlights &amp; reports WCAG issues in real time (link inside)
-
 # A11y Inspector - Web Accessibility Testing Tool
 
 A comprehensive Firefox extension that helps developers and testers create inclusive digital experiences through real-time accessibility analysis and detailed reporting.
