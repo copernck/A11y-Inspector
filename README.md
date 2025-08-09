@@ -1,6 +1,9 @@
 # A11y Inspector - Web Accessibility Testing Tool
 
-A comprehensive Firefox extension that helps developers and testers create inclusive digital experiences through real-time accessibility analysis and detailed reporting.
+A comprehensive Firefox extension that helps developers and testers create inclusive digital experiences through real time accessibility analysis and detailed reporting.
+an open source accessibility inspector i'm building from the ground up. this project is my deep dive into the world of wcag and inclusive design, created between my a level studies. it's a work in progress, and i'm documenting my journey and learning as i go.
+
+
 
 ## 🌟 Features
 
