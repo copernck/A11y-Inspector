@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Icon Generation Script for A11y Inspector
-# This script generates all required icon sizes from the main 1024x1024 icon
+# i made this script so it can generate all required icon sizes from the main 1024x1024 icon
 
 echo "🔧 A11y Inspector Icon Generator"
 echo "================================"
@@ -15,7 +15,7 @@ if ! command -v convert &> /dev/null; then
     exit 1
 fi
 
-# Check if source icon exists
+
 if [ ! -f "icon-1024.png" ]; then
     echo "❌ Source icon 'icon-1024.png' not found!"
     exit 1
