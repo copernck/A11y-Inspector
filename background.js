@@ -295,7 +295,7 @@ class A11yBackground {
     openDonateModal() {
         // This would typically open the donate modal in the popup
         // Since we can't directly open the popup from background,
-        // we'll show a notification instead
+        // so we'll show a notification instead
         this.showNotification(
             'Support A11y Inspector',
             'Thank you for your interest in supporting our work! Please open the extension popup to see donation options.'
@@ -311,8 +311,7 @@ class A11yBackground {
                 return;
             }
             
-            // In a real extension, this would send data to an analytics service
-            // For now, we'll just log it
+          
             console.log('Event tracked:', event, data);
         } catch (error) {
             console.error('Failed to track event:', error);
